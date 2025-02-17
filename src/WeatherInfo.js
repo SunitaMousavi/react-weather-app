@@ -1,4 +1,5 @@
 import React from "react";
+import FormattedDate from "./FormattedDate";
 
 export default function WeatherInfo(props) {
   return (
@@ -18,7 +19,9 @@ export default function WeatherInfo(props) {
       <div className="row">
         <div className="col">
           <h1>{props.data.city}</h1>
-          <div>sunday, 00:24</div>
+          <div>
+            <FormattedDate data={props.data.data} />
+          </div>
         </div>
         <div className="col">
           <div>Humidity: {props.data.humidity}%</div>

@@ -1,11 +1,15 @@
-import React, { use, useState } from "react";
+import React, { useState, useEffect } from "react";
 import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
 import "./Weather.css";
 
-export default function Weather(props) {
+export default function Weather({ defaultCity = "Tehran" }) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const [city, setCity] = useState(props.defaultCity);
+  const [city, setCity] = useState(defaultCity);
+
+  useEffect(() => {
+    search();
+  }, [city]); // Runs only on mount
 
   function handleResponse(response) {
     console.log(response.data);
@@ -33,12 +37,12 @@ export default function Weather(props) {
 
   function search() {
     const apiKey = "f9006f5eft0a33fd9693b7da488a8o99";
-    let city = "London";
     const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
     axios.get(apiUrl).then(handleResponse);
   }
 
-  if (weatherData.ready)
+  if (weatherData.ready) {
     return (
       <div className="Weather">
         <form onSubmit={handleSubmit}>
