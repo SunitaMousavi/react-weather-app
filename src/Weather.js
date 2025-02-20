@@ -7,10 +7,6 @@ export default function Weather({ defaultCity = "Tehran" }) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(defaultCity);
 
-  useEffect(() => {
-    search();
-  }, [city]); // Runs only on mount
-
   function handleResponse(response) {
     console.log(response.data);
     setWeatherData({
@@ -23,6 +19,7 @@ export default function Weather({ defaultCity = "Tehran" }) {
       city: response.data.city,
       icon: response.data.condition.icon_url,
       feel: response.data.temperature.feels_like,
+      date: response.data.time,
     });
   }
 
