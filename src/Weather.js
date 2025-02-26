@@ -18,7 +18,7 @@ export default function Weather() {
    */
   function handleResponse(response) {
     setWeatherData({
-      ready: true, // Set ready to true once data is fethced
+      ready: true, // Set ready to true once data is fetched
       city: response.data.city,
       temperature: Math.round(response.data.temperature.current),
     });
@@ -30,7 +30,7 @@ export default function Weather() {
    * This function updates the error state and resets the weatherData.
    */
   function handleError(error) {
-    console.log("Error fethcing the weather data:", error); // Log the error to the console
+    console.log("Error fetching the weather data:", error); // Log the error to the console
     setError(
       "Sorry, we could not find the weather for the city you are looking for. Please try again."
     ); // Update the error state to notify the user
