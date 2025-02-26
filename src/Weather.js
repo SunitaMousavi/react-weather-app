@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "ldrs/ring"; // Importing the loading spinner from ldrs
 
 export default function Weather() {
   // State to hold weather data
@@ -93,7 +94,15 @@ export default function Weather() {
           <h2>{weatherData.temperature}℃</h2>
         </div>
       ) : (
-        <p>Loading...</p> // Display loading message while data is being fetched
+        <div>
+          <l-ring
+            size="40"
+            stroke="5"
+            bg-opacity="0"
+            speed="2"
+            color="black"></l-ring>
+        </div>
+        // Display loading message while data is being fetched
       )}
     </div>
   );
