@@ -1,6 +1,6 @@
 import "./App.css";
 import Weather from "./Weather";
-import "ldrs/ring";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (

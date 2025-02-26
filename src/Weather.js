@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "ldrs/ring"; // Importing the loading spinner from ldrs
+import WeatherInfo from "./WeatherInfo";
 
 export default function Weather() {
   // State to hold weather data
@@ -17,10 +18,17 @@ export default function Weather() {
    * This function updates the weatherData state with the city and temperature.
    */
   function handleResponse(response) {
+    console.log(response.data);
     setWeatherData({
       ready: true, // Set ready to true once data is fetched
       city: response.data.city,
       temperature: Math.round(response.data.temperature.current),
+      description: response.data.condition.description,
+      icon: response.data.condition.icon_url,
+      feelsLike: response.data.temperature.feels_like,
+      humidity: response.data.temperature.humidity,
+      wind: response.data.wind.speed,
+      time: new Date(response.data.time * 1000),
     });
     setError(null); // Reset any previous errors
   }
@@ -89,10 +97,7 @@ export default function Weather() {
       {error && <div className="error">{error}</div>}{" "}
       {/* Display error message if it exists */}
       {weatherData.ready ? ( // Check if weather data is ready
-        <div>
-          <h1>{weatherData.city}</h1>
-          <h2>{weatherData.temperature}℃</h2>
-        </div>
+        <WeatherInfo data={weatherData} />
       ) : (
         <div>
           <l-ring
