@@ -28,7 +28,7 @@ export default function Weather() {
       feelsLike: response.data.temperature.feels_like,
       humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
-      time: new Date(response.data.time * 1000),
+      date: new Date(response.data.time * 1000),
     });
     setError(null); // Reset any previous errors
   }
