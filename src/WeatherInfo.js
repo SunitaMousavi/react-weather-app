@@ -26,6 +26,13 @@ export default function WeatherInfo(props) {
       <div>
         <h1>{props.data.city}</h1>
         <h2>{props.data.temperature}℃</h2>
+        <div>
+          <img
+            src={props.data.icon}
+            alt={props.data.description}
+            className="weather-icon"
+          />
+        </div>
         <h3>
           {day} {hours}:{minutes}
         </h3>

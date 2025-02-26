@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "ldrs/ring"; // Importing the loading spinner from ldrs
 import WeatherInfo from "./WeatherInfo";
+import "./Weather.css";
 
 export default function Weather() {
   // State to hold weather data
